@@ -9,11 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _authService: AuthService, private _rout: ActivatedRoute, private _router: Router) { }
+  constructor(private _authService: AuthService, private rout: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
-    const request_token = this._rout.snapshot.queryParams['request_token'];
-    if (request_token && !this._rout.snapshot.queryParams['denied']) {
+    const request_token = this.rout.snapshot.queryParams['request_token'];
+    if (request_token && !this.rout.snapshot.queryParams['denied']) {
         this._authService.getSession(request_token).subscribe(response => {
           this._router.navigate(['/home']);
         });
