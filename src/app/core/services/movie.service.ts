@@ -17,4 +17,7 @@ export class MovieService {
         );
     }
 
+  getMovieById(id: string): Observable<any> {
+    return this._http.get(`movie/${id}`);
+    }
 }
