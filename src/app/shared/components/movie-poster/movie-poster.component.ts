@@ -9,6 +9,7 @@ export class MoviePosterComponent implements OnInit {
 
 @Input() movie: any = {};
 @Output() selectMovie: EventEmitter<any> = new EventEmitter();
+@Output() movieDetailsShown: EventEmitter<any> = new EventEmitter();
 @HostBinding('class.movie-poster--active') @Input() isSelected = false;
 
   constructor() { }
@@ -16,6 +17,9 @@ export class MoviePosterComponent implements OnInit {
   ngOnInit() {
   }
 
+  showMovieDetails (movie: any) {
+    this.movieDetailsShown.emit(movie);
+  }
   clickMoviePoster (event: Event, movie, doNotPropagate?: boolean) {
     if (doNotPropagate) {
       event.stopPropagation();
